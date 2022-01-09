@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoPagina } from 'src/app/interfaces/info-pagina.interface';
 import { InfoPaginaService } from 'src/app/services/info-pagina.service';
 
 @Component({
@@ -8,9 +9,18 @@ import { InfoPaginaService } from 'src/app/services/info-pagina.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( public _servicio : InfoPaginaService) { }
+  info : InfoPagina = {};
+
+  constructor( private _servicio : InfoPaginaService) { }
 
   ngOnInit(): void {
+
+    this._servicio.cargarInfo()
+    .subscribe( resp => {
+        this.info = resp;
+      }
+    )
+
   }
 
 }

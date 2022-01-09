@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EquipoTrabajo } from 'src/app/interfaces/equipo.interface';
+import { InfoPaginaService } from '../../services/info-pagina.service';
 
 @Component({
   selector: 'app-about',
@@ -8,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  equipoTrabajo : EquipoTrabajo[] = [];
+
+  constructor(private equipoServicio : InfoPaginaService) { }
 
   ngOnInit(): void {
+    this.equipoServicio.cargarEquipo().subscribe(
+      resp => {
+        this.equipoTrabajo = resp;
+      }
+    ) 
   }
-
 }
