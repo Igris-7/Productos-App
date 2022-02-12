@@ -1,6 +1,6 @@
 # ProductosApp
 
-App de productos convertido a una aplicaión web en Angular.
+App de productos convertido a una aplicaión web en Angular 13.
 
 # Link
 
